@@ -2,8 +2,20 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
-const Home = () => {
+export default function Index() {
+  const router = useRouter();
+  const [input, loginInput] = useState<string>();
+  const clickButton = () => {
+    if (!input) return;
+    localStorage.setItem("login_id", input);
+    router.push({
+      pathname: "/home",
+      query: { input: input },
+    });
+  };
+
   return (
     <div>
       <Head>
@@ -19,25 +31,31 @@ const Home = () => {
           </div>
           <div className="text-center px-10">
             <form>
-              <input className="border border-gray-800 rounded-md py-1 px-5 my-2" />
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => loginInput(e.target.value)}
+                className="text-center border border-gray-800 rounded-md py-1 px-5 my-2 placeholder-gray-300"
+                placeholder="メールアドレス"
+              />
             </form>
             <form>
-              <input className="border border-gray-800 rounded-md py-1 px-5 my-2" />
+              <input
+                className="text-center border border-gray-800 rounded-md py-1 px-5 my-2 placeholder-gray-300"
+                placeholder="パスワード"
+              />
             </form>
           </div>
           <div className="text-center py-2">
-            <Link href="/home">
-              <a>
-                <button className="px-3 py-2 bg-red-500 text-lg text-white rounded-full">
-                  <p>ログイン</p>
-                </button>
-              </a>
-            </Link>
+            <button
+              onClick={clickButton}
+              className="px-3 py-2 bg-red-500 text-lg text-white rounded-full"
+            >
+              ログイン
+            </button>
           </div>
         </div>
       </main>
     </div>
   );
-};
-
-export default Home;
+}
