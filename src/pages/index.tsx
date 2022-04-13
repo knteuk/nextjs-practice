@@ -2,8 +2,6 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { useRouter } from "next/router";
-<<<<<<< Updated upstream
-=======
 import { useState } from "react";
 
 export default function Index() {
@@ -17,7 +15,6 @@ export default function Index() {
       /*query: { input: input },*/
     });
   };
->>>>>>> Stashed changes
 
 const Home = () => {
   return (
@@ -38,15 +35,11 @@ const Home = () => {
               <input className="border border-gray-800 rounded-md py-1 px-5 my-2" />
             </form>
             <form>
-<<<<<<< Updated upstream
-              <input className="border border-gray-800 rounded-md py-1 px-5 my-2" />
-=======
               <input
                 className="text-center border border-gray-800 rounded-md py-1 px-5 my-2 placeholder-gray-300"
                 placeholder="パスワード"
                 type="password"
               />
->>>>>>> Stashed changes
             </form>
           </div>
           <div className="text-center py-2">
